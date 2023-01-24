@@ -1,4 +1,4 @@
-# Just-Fight-Company-Page
+# Hangman-Game-App
 
 📃 **Content:**
 - [General Information ](#General-Information)
