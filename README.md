@@ -16,7 +16,7 @@ The project has been built using **JavaScript**, **React.js**, **CSS**, **React-
 
 ## 📘 <a id="setup">Setup</a>:
 
-1. [Download Zip file](https://github.com/IonPara/hangman-app/archive/refs/heads/master.zip)
+1. [Download Zip file](https://github.com/IonPara/hangman-game-app/archive/refs/heads/master.zip)
 2. [Download **Node.js**](https://nodejs.org/dist/v18.13.0/node-v18.13.0-x64.msi)
 3. Navigate to project directory, run: **npm start**
 
