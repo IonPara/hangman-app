@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #116791 !important;
+
 }
 
 code {
@@ -15,7 +17,7 @@ code {
 #root {
   display: flex;
   align-items: center;
-  height: 100vh;
+  height: 100dvh;
 }
 
 .container {

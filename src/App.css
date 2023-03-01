@@ -1,11 +1,10 @@
 
 .App {
     width: 100vw;
-    height: 100vh;
+    height: 720px;
     display: flex;
     justify-content: space-evenly;
     align-items: space-evenly;
-    background: #116791;
     font-family: 'Permanent Marker', cursive;
 
 }
@@ -28,8 +27,8 @@
 
 /* -----------------All of the buttons -----------------*/
 .btn {
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     margin: 2px;
     font-size: 2rem !important;
 }
@@ -62,12 +61,12 @@
 
 img {
     width: 400px;
-    height: 468px;
+    height: 400px;
 }
 /* -----------------Game container -----------------*/
 
 .game-container {
-    height: 720px;
+    height: 90%;
     max-width: 75vw;
     position: relative;
     text-shadow: 2px 2px 4px #d7d5d5;
@@ -199,7 +198,7 @@ img {
 }
 
 
-@media screen and (max-width: 630px) {
+@media screen and (max-width: 700px) {
     .game-container, .App {
         height: fit-content;
         margin-top: 30px;
