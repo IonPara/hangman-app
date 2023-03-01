@@ -21,6 +21,8 @@ Hangman is a simple word guessing game. The player has to try to figure out the 
 3. Navigate to project directory, run: **npm start**
 4. Run: **npm start**
 
+## Or you can visualise it by clicking on the link [here](https://hangman-game-101.netlify.app/)
+
 Runs the app in the development mode.
 
 Open http://localhost:3000 to view it in your browser.
