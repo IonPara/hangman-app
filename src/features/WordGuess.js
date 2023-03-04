@@ -6,7 +6,7 @@ import Alphabet from "./Alphabet";
 import dictionaryArray from "./words";
 import Help from "./Help";
 // Import useState Hook
-import { useState } from "react";
+import { useState, useEffect } from "react";
 // Import all of the images
 import state1 from "../hangmanDrawings/state1.GIF";
 import state2 from "../hangmanDrawings/state2.GIF";
@@ -43,6 +43,8 @@ let hyphen = hyphens(newRandWord);
 const WordGuess = () => {
   // Destructure useState for the state of hyphen
   const [state, setState] = useState(hyphen);
+  const [counter, setCounter] = useState(0);
+
   // Destructure useState for the state of the images
   const [image, setImage] = useState(images[0]);
   // Destructure useState an set it to 1, we will use this as an index
@@ -55,13 +57,23 @@ const WordGuess = () => {
   const [display, setDisplay] = useState(false);
 
   // If the state as a string is equal to newRandWord as a string
-  if (state.join("") === newRandWord.join("")) {
-    // Set display and result to true
-    setDisplay(true);
-    setResult(true);
-    // Set the state as hyphen in an array so we avoid the infinite loop
-    setState([hyphen]);
-  }
+  useEffect(() => {
+    if (state.join("") === newRandWord.join("")) {
+      // Set display and result to true
+      setDisplay(true);
+      setResult(true);
+      setCounter(0);
+      // Set the state as hyphen in an array so we avoid the infinite loop
+      setState([hyphen]);
+      // If the imgIndex state is equal to 10
+      // Set display to true and  set result to false
+    } else if (imgIndex === 11) {
+      setState([newRandWord]);
+      setDisplay(true);
+      setResult(false);
+      setCounter(0);
+    }
+  }, [imgIndex, counter]);
 
   // Create a handleResult hook that will reset all of the states and increment the loosing or winning score
   // depending on the button clicked
@@ -90,18 +102,17 @@ const WordGuess = () => {
   // Create a handleClick hook that will display the letter of change the image depending on the button clicked
   const handleClick = (e) => {
     const button = e.target.innerText;
-    let index = 0;
     // Loop through the random word array
     // For every letter in the array
     // If the letter is equal to the letter from the button
     // Change the item from the hyphen array with the letter
     // Reset the state with an updated value
-    newRandWord.forEach((letter) => {
+    newRandWord.forEach((letter, index) => {
       if (button === letter) {
         hyphen[index] = letter;
         setState(hyphen.map((l) => l));
+        setCounter((prev) => prev + 1);
       }
-      index++;
     });
 
     // If the radom word array doesn't include the letter
@@ -109,13 +120,6 @@ const WordGuess = () => {
     if (!newRandWord.includes(button)) {
       setImage(images[imgIndex]);
       setImgIndex((prev) => prev + 1);
-    }
-    // If the imgIndex state is equal to 10
-    // Set display to true and  set result to false
-    if (imgIndex === 10) {
-      setState([newRandWord]);
-      setDisplay(true);
-      setResult(false);
     }
   };
 
