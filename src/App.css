@@ -60,8 +60,8 @@
 /* -----------------Hangman images -----------------*/
 
 img {
-    width: 400px;
-    height: 400px;
+    width: 300px;
+    height: 350px;
 }
 /* -----------------Game container -----------------*/
 
@@ -178,7 +178,7 @@ img {
     }
 
     img {
-        width: 400px;
+        width: 350px;
         height: 350px;
     }
 
@@ -201,7 +201,7 @@ img {
 @media screen and (max-width: 700px) {
     .game-container, .App {
         height: fit-content;
-        margin-top: 30px;
+        margin-top: 150px;
     }
     .btn {
         width: 50px;
@@ -215,7 +215,7 @@ img {
 
     img {
         width: 300px;
-        height: 200px;
+        height: 300px;
     }
 
     .description {
