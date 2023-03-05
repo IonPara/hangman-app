@@ -44,6 +44,7 @@ const WordGuess = () => {
   // Destructure useState for the state of hyphen
   const [state, setState] = useState(hyphen);
   const [counter, setCounter] = useState(0);
+  const [hint, setHint] = useState(3);
 
   // Destructure useState for the state of the images
   const [image, setImage] = useState(images[0]);
@@ -123,6 +124,23 @@ const WordGuess = () => {
     }
   };
 
+  const handleHint = () => {
+    for (let i = 0; i < newRandWord.length; i++) {
+      let letter = newRandWord[i];
+      if (state[i] !== letter && hint) {
+        // eslint-disable-next-line no-loop-func
+        newRandWord.forEach((l, index) => {
+          if (letter === l) {
+            hyphen[index] = letter;
+            setState(hyphen.map((l) => l));
+          }
+        });
+        setCounter((prev) => prev + 1);
+        break;
+      }
+    }
+  };
+
   return (
     <div className="game-container">
       {/* If display state is true set the className to show else set the className to hide */}
@@ -138,7 +156,18 @@ const WordGuess = () => {
       <div className="description">
         <div className="heading">
           {/* Add the Help component */}
-          <Help />
+          <div className="hint-container d-flex">
+            <Help />
+            <Button
+              onClick={() => {
+                hint > 0 ? setHint((prev) => prev - 1) : setHint(0);
+                handleHint();
+              }}
+              className="help-button bg-success text-white"
+            >
+              Hint
+            </Button>
+          </div>
           <h2>Hangman</h2>
         </div>
         <div className="score">
@@ -149,6 +178,9 @@ const WordGuess = () => {
           </h4>
           <h4 className="loses">
             Losses<span>{loosingScore}</span>
+          </h4>
+          <h4 className="text-success">
+            Hints <span>{hint}</span>
           </h4>
         </div>
       </div>
