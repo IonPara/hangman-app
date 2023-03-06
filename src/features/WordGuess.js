@@ -98,6 +98,7 @@ const WordGuess = () => {
     } else {
       setLoosingScore(0);
       setWinningScore(0);
+      setHint(3);
     }
   };
   // Create a handleClick hook that will display the letter of change the image depending on the button clicked
