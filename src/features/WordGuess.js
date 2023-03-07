@@ -45,6 +45,7 @@ const WordGuess = () => {
   const [state, setState] = useState(hyphen);
   const [counter, setCounter] = useState(0);
   const [hint, setHint] = useState(3);
+  const [id, setId] = useState([]);
 
   // Destructure useState for the state of the images
   const [image, setImage] = useState(images[0]);
@@ -95,10 +96,12 @@ const WordGuess = () => {
       } else {
         setWinningScore((prev) => prev + 1);
       }
+      setId([]);
     } else {
       setLoosingScore(0);
       setWinningScore(0);
       setHint(3);
+      setId([]);
     }
   };
   // Create a handleClick hook that will display the letter of change the image depending on the button clicked
@@ -165,6 +168,7 @@ const WordGuess = () => {
                 handleHint();
               }}
               className="help-button bg-success text-white"
+              disabled={!hint ? true : false}
             >
               Hint
             </Button>
@@ -193,7 +197,7 @@ const WordGuess = () => {
             <Map state={state} />
           </div>
           {/* Add the Alphabet component with the handleCLick on click event listener */}
-          <Alphabet handleClick={handleClick} />
+          <Alphabet id={id} setId={setId} handleClick={handleClick} />
         </div>
       </div>
     </div>

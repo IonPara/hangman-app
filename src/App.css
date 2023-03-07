@@ -97,6 +97,7 @@ img {
     color: white;
     font-size: 2rem;
     border-radius: 20px;
+    z-index: 20;
 }
 
 .hide {
